@@ -35,6 +35,9 @@ public class IndexUtil {
 
             if(fileName.indexOf(".txt") != -1) {
                 //将文件名、文件内容、文件体积和文件路径封装成Field对象（类比来说，Field相当于数据库中表中的列）
+            	//Field.Store.NO：不对数据进行存储，但会添加进索引表
+            	//Field.Store.YES：不对数据进行存储，但会添加进索引表
+            	//StringField不会对关键字进行分词（即不分拆建立索引而是整体建立）
                 Field fileName_field = new StringField("fileName", fileName, Field.Store.YES);
                 Field content_field = new TextField("fileContent", fileContent, Field.Store.YES);
                 Field size_field = new LongPoint("fileSize", fileSize);
